@@ -1,0 +1,16 @@
+.App {
+  margin: 10px;
+  background: white;
+}
+
+.card{
+  margin: 5px;
+}
+
+.form{
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
