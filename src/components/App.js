@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import Jumbotron from './Jumbotron';
-import '../styles/App.css';
+import React, { Component } from "react";
+import Jumbotron from "./Jumbotron";
+import "../styles/App.css";
 
 class App extends Component {
   // PROPS AND STATE
@@ -15,20 +15,18 @@ class App extends Component {
 
     this.state = {
       vehicles: [],
-      value: '',
-      pilot: ''
-    }
+      value: "",
+      pilot: ""
+    };
   }
-
 
   // FORM: HANDLE INPUT CHANGES
   // handleNameChange below:
   // See form lesson for details.
   // Enter your code below:
   handleNameChange(event) {
-    this.setState({value: event.target.value})
+    this.setState({ value: event.target.value });
   }
-
 
   //  FORM: SUBMIT METHOD
   // handleSubmit below:
@@ -40,9 +38,8 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       pilot: this.state.value,
-      value: ''
-    })
-
+      value: ""
+    });
   }
 
   // LIFECYCLE
@@ -53,15 +50,17 @@ class App extends Component {
   // You will want to use this array when you set the state of 'vehicles'. You will need this data in your render.
   // Enter your code below:
   componentDidMount() {
-    fetch('https://swapi.co/api/vehicles/').then((response) => {
-      return response.json()
-    }).then((data) => {
-      let vehicles = data.results;
-      console.log(vehicles);
-      this.setState({
-        vehicles: vehicles
+    fetch("https://swapi.co/api/vehicles/")
+      .then(response => {
+        return response.json();
       })
-    })
+      .then(data => {
+        let vehicles = data.results;
+        console.log(vehicles);
+        this.setState({
+          vehicles: vehicles
+        });
+      });
   }
 
   // RENDER
@@ -78,36 +77,61 @@ class App extends Component {
     Map over this variable to access the values needed to render.
     */
     let vehicleArray = this.state.vehicles;
-    let vehicles = vehicleArray.map((vehicle) => {
+    let vehicles = vehicleArray.map(vehicle => {
       return (
         <div key={vehicle.name} className="card col-md-5">
-          <h4>Vehicle: {vehicle.name}</h4>
-          <h5>Model: {vehicle.model}</h5>
+          <h4>
+            Vehicle: {vehicle.name}
+          </h4>
+          <h5>
+            Model: {vehicle.model}
+          </h5>
           <div className="specs">
             <h5>Specs</h5>
             <ul>
-              <li>Manufacturer: {vehicle.manufacturer}</li>
-              <li>Class: {vehicle.vehicle_class}</li>
-              <li>Passengers: {vehicle.passengers}</li>
-              <li>Crew: {vehicle.crew}</li>
-              <li>Length: {vehicle.length}</li>
-              <li>Max Speed: {vehicle.max_atmosphering_speed}</li>
-              <li>Cargo Capacity: {vehicle.cargo_capacity}</li>
+              <li>
+                Manufacturer: {vehicle.manufacturer}
+              </li>
+              <li>
+                Class: {vehicle.vehicle_class}
+              </li>
+              <li>
+                Passengers: {vehicle.passengers}
+              </li>
+              <li>
+                Crew: {vehicle.crew}
+              </li>
+              <li>
+                Length: {vehicle.length}
+              </li>
+              <li>
+                Max Speed: {vehicle.max_atmosphering_speed}
+              </li>
+              <li>
+                Cargo Capacity: {vehicle.cargo_capacity}
+              </li>
             </ul>
           </div>
         </div>
-      )
-    })
+      );
+    });
     return (
       <div className="App">
         <Jumbotron />
         <div className="form col">
           <h3>What is your name, pilot?</h3>
           <form className="form" onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.value} onChange={this.handleNameChange} placeholder="Enter your name"/>
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleNameChange}
+              placeholder="Enter your name"
+            />
             <input className="btn" type="submit" value="Submit" />
           </form>
-          <h1>{this.state.pilot}</h1>
+          <h1>
+            {this.state.pilot}
+          </h1>
         </div>
         <div className="row">
           {vehicles}
@@ -119,7 +143,7 @@ class App extends Component {
          Your form will also need a header in which you will pass the state of the form upon submit.
          */}
       </div>
-    )
+    );
   }
 }
 
