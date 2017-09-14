@@ -80,7 +80,7 @@ class App extends Component {
     let vehicleArray = this.state.vehicles;
     let vehicles = vehicleArray.map((vehicle) => {
       return (
-        <div key={vehicle.name} className="card">
+        <div key={vehicle.name} className="card col-md-5">
           <h4>Vehicle: {vehicle.name}</h4>
           <h5>Model: {vehicle.model}</h5>
           <div className="specs">
@@ -101,15 +101,18 @@ class App extends Component {
     return (
       <div className="App">
         <Jumbotron />
-        <div className="form">
+        <div className="form col">
           <h3>What is your name, pilot?</h3>
           <form className="form" onSubmit={this.handleSubmit}>
             <input type="text" value={this.state.value} onChange={this.handleNameChange} placeholder="Enter your name"/>
-            <input type="submit" value="Submit" />
+            <input className="btn" type="submit" value="Submit" />
           </form>
           <h1>{this.state.pilot}</h1>
         </div>
-        {vehicles}
+        <div className="row">
+          {vehicles}
+        </div>
+
         {/*
         The App component needs the following:
          jumbotron section, form section, vehicle cards section.

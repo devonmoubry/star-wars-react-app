@@ -1,6 +1,6 @@
 .App {
   margin: 10px;
-  background: white;
+  text-align: center;
 }
 
 .card{
@@ -9,8 +9,18 @@
 
 .form{
   text-align: center;
+  color: white;
 }
 
 ul {
   list-style: none;
+}
+
+.row {
+  margin-left: 10em;
+  text-align: left;
+}
+
+.jumbotron {
+  color: black;
 }
